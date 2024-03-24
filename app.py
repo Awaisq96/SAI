@@ -9,17 +9,17 @@ def index():
 
 @app.route('/process', methods=['POST'])
 def process():
-    audio_file = request.files['audioFile']
+    # Handle the form submission
     text_input = request.form['textInput']
+    audio_file = request.files['audioFile']
     
-    # Save audio file if uploaded
-    if audio_file:
-        audio_file.save(audio_file.filename)
+    # Save the audio file
+    audio_file.save(audio_file.filename)
     
-    # Execute run.py
-    subprocess.run(['python', 'run.py', text_input])
+    # Call the run.py script with appropriate arguments
+    output = subprocess.check_output(['python', 'run.py', audio_file.filename, text_input])
     
-    return 'Processing complete'
+    return render_template('index.html', output=output.decode('utf-8'))
 
 if __name__ == '__main__':
     app.run(debug=True)

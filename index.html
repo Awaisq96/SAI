@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to Our Website</h1>
+    <form id="inputForm" action="/process" method="post" enctype="multipart/form-data">
+        <input type="file" name="audioFile" id="audioFile" class="input-field" accept="audio/mp3" placeholder="Upload MP3 File">
+        <textarea name="textInput" id="textInput" class="input-field" placeholder="Enter Text"></textarea>
+        <button type="submit" class="btn">Process</button>
+    </form>
+    <div class="output">
+        <h2>Output</h2>
+        <div id="outputText"></div>
+    </div>
+</div>
+
+</body>
+</html>
